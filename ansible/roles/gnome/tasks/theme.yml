@@ -1,0 +1,39 @@
+---
+
+- name: Copy wallpaper
+  copy:
+    src: wallpaper.jpg
+    dest: /home/vagrant/Pictures/wallpaper.jpg
+    owner: vagrant
+    group: vagrant
+    mode: '0644'
+
+- name: Set desktop background
+  command: gsettings set org.gnome.desktop.background picture-uri 'file:///home/vagrant/Pictures/wallpaper.jpg'
+
+- name: Set shortcuts bar
+  command: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop']"
+
+- name: Set GTK Theme
+  command: gsettings set org.gnome.desktop.interface gtk-theme Arc-Dark
+
+- name: Set document font
+  command: gsettings set org.gnome.desktop.interface document-font-name 'Sans Regular 11'
+
+- name: Set Interface text font
+  command: gsettings set org.gnome.desktop.interface font-name 'Ubuntu Regular 11'
+
+- name: Set Monospace font
+  command: gsettings set org.gnome.desktop.interface monospace-font-name 'Ubuntu Mono Regular 13'
+
+- name: Set legacy window title font
+  command: gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Ubuntu Bold 11'
+
+- name: Set font hinting
+  command: gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight'
+
+- name: Set font antialiasing
+  command: gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
+
+- name: Disable animations
+  command: gsettings set org.gnome.desktop.interface enable-animations false

@@ -8,9 +8,14 @@
       - gdm
     state: present
 
-- name: Fix fonts to use same fonts as Ubuntu
+- name: Install Ubuntu Fonts
   pacman:
     name: ttf-ubuntu-font-family
+    state: present
+
+- name: Install Arc Theme
+  pacman:
+    name: arc-gtk-theme
     state: present
 
 - name: Copy GDM config file to use Xorg
@@ -25,3 +30,7 @@
   systemd:
     name: gdm
     enabled: yes
+
+- include: theme.yml
+  become: yes
+  become_user: vagrant

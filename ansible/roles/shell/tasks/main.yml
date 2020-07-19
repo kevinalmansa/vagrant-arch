@@ -7,7 +7,21 @@
       - zsh-completions
     state: present
 
-- name: Set default shell to zsh
+- name: Set default shell to zsh for vagrant user
+  command: chsh -s /bin/zsh vagrant
+
+- name: Download oh-my-zsh
   become: yes
   become_user: vagrant
-  command: chsh -s /bin/zsh
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/ohmyzsh_install.sh
+    mode: '0755'
+
+- name: Install oh-my-zsh
+  become: yes
+  become_user: vagrant
+  command: /tmp/ohmyzsh_install.sh
+  args:
+    chdir: /home/vagrant
+  ignore_errors: yes
