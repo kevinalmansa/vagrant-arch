@@ -1,0 +1,23 @@
+---
+
+- name: Remove default virtualbox-guest-nox
+  pacman:
+    name: virtualbox-guest-utils-nox
+    state: absent
+
+- name: Install xorg
+  pacman:
+    name:
+      - virtualbox-guest-utils
+      - xorg-server
+      - xorg-server-common
+      - mesa
+    state: present
+
+#- name: Install xorg debug packages
+#  pacman:
+#    name:
+#      - xorg-twm
+#      - xterm
+#      - xorg-xclock
+#      - xorg-xinit

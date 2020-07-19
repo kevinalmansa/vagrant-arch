@@ -1,0 +1,13 @@
+---
+
+- name: Install zsh
+  pacman:
+    name:
+      - zsh
+      - zsh-completions
+    state: present
+
+- name: Set default shell to zsh
+  become: yes
+  become_user: vagrant
+  command: chsh -s /bin/zsh

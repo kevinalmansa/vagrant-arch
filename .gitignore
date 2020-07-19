@@ -1,0 +1,7 @@
+# vagrant state directory
+.vagrant/
+*.log
+
+# Intellij
+.idea/
+*.iml

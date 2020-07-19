@@ -1,0 +1,27 @@
+---
+
+- name: Install Gnome & Virtualbox Guest additions
+  pacman:
+    name:
+      - gnome
+      - gnome-tweaks
+      - gdm
+    state: present
+
+- name: Fix fonts to use same fonts as Ubuntu
+  pacman:
+    name: ttf-ubuntu-font-family
+    state: present
+
+- name: Copy GDM config file to use Xorg
+  copy:
+    src: custom.conf
+    dest: /etc/gdm/custom.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: enable GDM
+  systemd:
+    name: gdm
+    enabled: yes
