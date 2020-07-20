@@ -1,0 +1,32 @@
+---
+
+- name: Ensure iptables is installed
+  pacman:
+    name: iptables
+    state: present
+
+- name: Add ipv4 firewall config
+  copy:
+    src: iptables.rules
+    dest: /etc/iptables/iptables.rules
+  notify:
+    - restart iptables
+
+- name: Add ipv6 firewall config
+  copy:
+    src: ip6tables.rules
+    dest: /etc/iptables/ip6tables.rules
+  notify:
+    - restart ip6tables
+
+- name: Enable and start iptables
+  service:
+    name: iptables.service
+    enabled: yes
+    state: started
+
+- name: Enable and start ip6tables
+  service:
+    name: ip6tables.service
+    enabled: yes
+    state: started

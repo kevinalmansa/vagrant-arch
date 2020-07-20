@@ -12,6 +12,7 @@
   roles:
     - expand-disk
     - base
+    - iptables
     - shell
     - xorg
     - gnome

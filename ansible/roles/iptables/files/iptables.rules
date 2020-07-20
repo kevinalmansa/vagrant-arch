@@ -1,0 +1,21 @@
+*filter
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [35:2732]
+:SSH_CHECK - [0:0]
+:TCP - [0:0]
+:UDP - [0:0]
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -m conntrack --ctstate INVALID -j DROP
+-A INPUT -p icmp -m icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 22 --tcp-flags FIN,SYN,RST,ACK SYN -m conntrack --ctstate NEW -j SSH_CHECK
+-A INPUT -p udp -m conntrack --ctstate NEW -j UDP
+-A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m conntrack --ctstate NEW -j TCP
+-A SSH_CHECK -s 10.0.2.2/32 -i eth0 -p tcp -m tcp --dport 22 -j ACCEPT
+-A SSH_CHECK -i eth1 -p tcp -m tcp --dport 22 -j ACCEPT
+-A SSH_CHECK -m recent --set --name SSH --mask 255.255.255.255 --rsource
+-A SSH_CHECK -m recent --update --seconds 60 --hitcount 2 --name SSH -j DROP
+-A SSH_CHECK -m recent --update --seconds 3600 --hitcount 10 --name SSH -j DROP
+-A SSH_CHECK -i eth0 -p tcp -m tcp --dport 22 -j ACCEPT
+COMMIT
