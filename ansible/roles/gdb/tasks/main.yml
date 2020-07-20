@@ -1,0 +1,29 @@
+---
+
+- name: Installing gdb
+  pacman:
+    name: gdb
+    state: present
+
+- name: Ensuring git directory exists
+  become: yes
+  become_user: vagrant
+  file:
+    path: /home/vagrant/git/packages
+    state: directory
+    mode: '0755'
+
+- name: Downloading GEF to enhance GDB
+  become: yes
+  become_user: vagrant
+  git:
+    repo: https://github.com/hugsy/gef
+    dest: /home/vagrant/git/packages/gef
+
+- name: Configuring gdb to use GEF
+  copy:
+    src: gdbinit
+    dest: /home/vagrant/.gdbinit
+    owner: vagrant
+    group: vagrant
+    mode: '0644'

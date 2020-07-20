@@ -1,5 +1,12 @@
 ---
 
+- name: Ensure Pictures folder exists
+  file:
+    path: /home/vagrant/Pictures
+    owner: vagrant
+    group: vagrant
+    state: directory
+
 - name: Copy wallpaper
   copy:
     src: wallpaper.jpg

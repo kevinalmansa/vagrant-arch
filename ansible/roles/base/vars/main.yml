@@ -1,0 +1,17 @@
+base_packages:
+  - base-devel
+  - linux-headers
+  - git
+  - p7zip
+  - gzip
+  - unzip
+  - zip
+  - unrar
+  - wget
+  - exfat-utils
+  - ntfs-3g
+  - htop
+  - nano
+  - vi
+  - vim
+  - emacs

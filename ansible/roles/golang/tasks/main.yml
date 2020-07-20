@@ -1,0 +1,6 @@
+---
+
+- name: Installing Golang
+  pacman:
+    name: go
+    state: present

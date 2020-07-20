@@ -10,9 +10,17 @@
         upgrade: yes
 
   roles:
-    - devel
+    - expand-disk
+    - base
     - shell
     - xorg
     - gnome
+    - golang
+    - nasm
+    - gdb
     - yay
     - firefox
+    - google-chrome
+    - intellij
+    - vscode
+    - nmap

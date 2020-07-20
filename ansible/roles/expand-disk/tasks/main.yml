@@ -1,0 +1,11 @@
+- name: Copy extend_partition.sh script
+  copy:
+    src: extend_partition.sh
+    dest: /tmp/extend_partition.sh
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Resize root partition
+  become: yes
+  shell: /tmp/extend_partition.sh

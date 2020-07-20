@@ -1,0 +1,6 @@
+---
+
+- name: Installing base packages
+  pacman:
+    name: "{{ base_packages }}"
+    state: present
