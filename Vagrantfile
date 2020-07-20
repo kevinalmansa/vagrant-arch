@@ -4,6 +4,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "archlinux/archlinux"
   config.disksize.size = '50GB'
+  config.ssh.insert_key = true
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.

@@ -1,0 +1,14 @@
+- name: Copying zshrc file
+  copy:
+    src: zshrc
+    dest: /home/vagrant/.zshrc
+
+- name: Copying functions file
+  copy:
+    src: functions
+    dest: /home/vagrant/.functions
+
+- name: Copying aliases
+  copy:
+    src: aliases
+    dest: /home/vagrant/.aliases

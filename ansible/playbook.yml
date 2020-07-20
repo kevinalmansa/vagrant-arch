@@ -14,6 +14,7 @@
     - base
     - iptables
     - shell
+    - dotfiles
     - xorg
     - gnome
     - golang
@@ -25,3 +26,5 @@
     - intellij
     - vscode
     - nmap
+    - wireshark
+    - docker

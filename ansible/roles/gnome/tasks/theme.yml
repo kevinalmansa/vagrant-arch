@@ -44,3 +44,16 @@
 
 - name: Disable animations
   command: gsettings set org.gnome.desktop.interface enable-animations false
+
+- name: Set snazzy color scheme for Gnome Terminal
+  copy:
+    src: gnome-terminal.sh
+    dest: /tmp/gnome-terminal.sh
+    owner: vagrant
+    group: vagrant
+    mode: '0755'
+
+- name: Set snazzy color scheme for Gnome Terminal
+  become: yes
+  become_user: vagrant
+  command: /tmp/gnome-terminal.sh

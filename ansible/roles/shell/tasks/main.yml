@@ -5,6 +5,7 @@
     name:
       - zsh
       - zsh-completions
+      - zsh-autosuggestions
     state: present
 
 - name: Set default shell to zsh for vagrant user
@@ -25,3 +26,23 @@
   args:
     chdir: /home/vagrant
   ignore_errors: yes
+
+- name: Install Powerline Fonts for Spaceship
+  pacman:
+    name: powerline-fonts
+    state: present
+
+- name: Download Spaceship
+  become: yes
+  become_user: vagrant
+  git:
+    repo: https://github.com/denysdovhan/spaceship-prompt.git
+    dest: /home/vagrant/git/packages/spaceship-prompt
+
+- name: Install Spaceship
+  file:
+    src: /home/vagrant/git/packages/spaceship-prompt/spaceship.zsh-theme
+    dest: /home/vagrant/.oh-my-zsh/custom/themes/spaceship.zsh-theme
+    owner: vagrant
+    group: vagrant
+    state: link

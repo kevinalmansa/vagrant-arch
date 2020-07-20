@@ -9,24 +9,20 @@
   copy:
     src: iptables.rules
     dest: /etc/iptables/iptables.rules
-  notify:
-    - restart iptables
 
 - name: Add ipv6 firewall config
   copy:
     src: ip6tables.rules
     dest: /etc/iptables/ip6tables.rules
-  notify:
-    - restart ip6tables
 
 - name: Enable and start iptables
   service:
     name: iptables.service
     enabled: yes
-    state: started
+    state: stopped
 
 - name: Enable and start ip6tables
   service:
     name: ip6tables.service
     enabled: yes
-    state: started
+    state: stopped
