@@ -28,3 +28,4 @@
     - nmap
     - wireshark
     - docker
+    - openssh
