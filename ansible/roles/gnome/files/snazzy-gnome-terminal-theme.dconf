@@ -1,0 +1,8 @@
+[/]
+audible-bell=false
+background-color='rgb(40,42,54)'
+foreground-color='rgb(239,240,235)'
+palette=['rgb(0,0,0)', 'rgb(255,92,87)', 'rgb(90,247,142)', 'rgb(243,249,157)', 'rgb(87,199,255)', 'rgb(255,106,193)', 'rgb(154,237,254)', 'rgb(241,241,240)', 'rgb(104,104,104)', 'rgb(255,92,87)', 'rgb(90,247,142)', 'rgb(243,249,157)', 'rgb(87,199,255)', 'rgb(255,106,193)', 'rgb(154,237,254)', 'rgb(241,241,240)']
+use-system-font=true
+use-theme-colors=false
+visible-name='Snazzy'

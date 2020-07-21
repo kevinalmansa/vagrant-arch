@@ -1,7 +1,55 @@
+bastion-tunnel() {
+  ssh -L 9443:$1:443 ubuntu@$2 -N
+}
+
+base64-dec() {
+  echo "$1" | base64 --decode ; echo
+}
+
+search-dir() {
+  grep -rn $1 -e $2
+}
+
+# remove emacs temporary files from directory
+cleandir() {
+  rm -rfv $1/.*~
+  rm -rfv $1/*~
+}
+
+# helper function for cleandir
+clean() {
+  if [ $1 ]; then
+    if [ -d $1 ]; then
+      cleandir $1
+    else
+      echo "$1 not a directory"
+    fi
+  else
+    cleandir `pwd`
+  fi
+}
+
 python-http(){
   python3 -m http.server 8080
 }
 
 function metasploit() {
-    docker run --rm -it  --network=host metasploitframework/metasploit-framework ./msfconsole "$@"
+  docker run --rm -it  --network=host metasploitframework/metasploit-framework ./msfconsole "$@"
+}
+
+# https://github.com/jessfraz/dotfiles
+
+## Determine size of a file or total size of a directory
+fs() {
+	if du -b /dev/null > /dev/null 2>&1; then
+		local arg=-sbh
+	else
+		local arg=-sh
+	fi
+	# shellcheck disable=SC2199
+	if [[ -n "$@" ]]; then
+		du $arg -- "$@"
+	else
+		du $arg -- .[^.]* *
+	fi
 }

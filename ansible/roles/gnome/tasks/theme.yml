@@ -47,13 +47,14 @@
 
 - name: Set snazzy color scheme for Gnome Terminal
   copy:
-    src: gnome-terminal.sh
-    dest: /tmp/gnome-terminal.sh
+    src: snazzy-gnome-terminal-theme.dconf
+    dest: /tmp/snazzy-gnome-terminal-theme.dconf
     owner: vagrant
     group: vagrant
-    mode: '0755'
+    mode: '0644'
 
 - name: Set snazzy color scheme for Gnome Terminal
   become: yes
   become_user: vagrant
-  command: /tmp/gnome-terminal.sh
+  shell: "dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ < /tmp/snazzy-gnome-terminal-theme.dconf"
+
