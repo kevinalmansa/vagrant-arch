@@ -1,0 +1,6 @@
+---
+
+- name: Installing ghidra
+  pacman:
+    name: ghidra
+    state: present

@@ -1,0 +1,6 @@
+---
+
+- name: Installing sslscan
+  pacman:
+    name: sslscan
+    state: present

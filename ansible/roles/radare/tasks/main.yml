@@ -1,0 +1,6 @@
+---
+
+- name: Installing radare2
+  pacman:
+    name: radare2
+    state: present

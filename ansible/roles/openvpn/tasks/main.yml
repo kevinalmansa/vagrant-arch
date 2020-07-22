@@ -1,0 +1,6 @@
+---
+
+- name: Installing openvpn server & client
+  pacman:
+    name: openvpn
+    state: present

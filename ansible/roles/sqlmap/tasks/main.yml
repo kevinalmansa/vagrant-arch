@@ -1,0 +1,6 @@
+---
+
+- name: Installing sqlmap
+  pacman:
+    name: sqlmap
+    state: present

@@ -33,7 +33,7 @@ python-http(){
   python3 -m http.server 8080
 }
 
-function metasploit() {
+metasploit() {
   docker run --rm -it  --network=host metasploitframework/metasploit-framework ./msfconsole "$@"
 }
 

@@ -1,0 +1,6 @@
+---
+
+- name: Installing proxychains
+  pacman:
+    name: proxychains-ng
+    state: present

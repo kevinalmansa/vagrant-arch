@@ -25,7 +25,29 @@
     - google-chrome
     - intellij
     - vscode
-    - nmap
-    - wireshark
     - docker
     - openssh
+    - openvpn
+    - filezilla
+    - tmux
+    - proxychains
+    - ghidra
+    - radare
+    - cutter
+    - hashid
+    - burpsuite
+    - nmap
+    - wireshark
+    - sqlmap
+    - gobuster
+    - nikto
+    - ffuf
+    - sublist3r
+    - nbtscan
+    - onesixtyone
+    - smbclient
+    - smbmap
+    - smtp-user-enum
+    - snmpwalk
+    - sslscan
+    - sipvicious

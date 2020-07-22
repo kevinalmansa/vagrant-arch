@@ -1,0 +1,22 @@
+---
+
+- name: Ensure aur directory exists for user
+  become: yes
+  become_user: vagrant
+  file:
+    path: /home/vagrant/aur
+    state: directory
+
+- name: Clone gobuster AUR repo
+  become: yes
+  become_user: vagrant
+  git:
+    repo: https://aur.archlinux.org/gobuster-git.git
+    dest: /home/vagrant/aur/gobuster-git
+
+- name: Install gobuster
+  become: yes
+  become_user: vagrant
+  command: makepkg --noconfirm -si
+  args:
+    chdir: /home/vagrant/aur/gobuster-git
