@@ -41,11 +41,16 @@ Vagrant.configure("2") do |config|
 
   # config.vm.provision :reload
 
-  # Enable provisioning with Ansible - configure Kubernetes
+  # Enable provisioning with Ansible - configure base system
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "ansible/playbook.yml"
   end
 
   config.vm.provision :reload
+
+  # Post configuration tasks
+  #config.vm.provision "ansible_local" do |ansible|
+  #  ansible.playbook = "ansible/playbook-postconfig.yml"
+  #end
 
 end

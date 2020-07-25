@@ -2,12 +2,9 @@
 
 - name: Installing docker
   pacman:
-    name: docker
-    state: present
-
-- name: Installing docker-compose
-  pacman:
-    name: docker-compose
+    name:
+    - docker
+    - docker-compose
     state: present
 
 - name: adding user vagrant to group docker

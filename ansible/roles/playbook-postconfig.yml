@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  become: yes
+
+  pre_tasks:
+    - name: Update system
+      pacman:
+        update_cache: yes
+        upgrade: yes
+
+  roles:
+    - elk-docker
