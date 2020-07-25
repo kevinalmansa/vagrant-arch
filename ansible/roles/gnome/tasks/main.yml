@@ -6,6 +6,8 @@
       - gnome
       - gnome-tweaks
       - gdm
+      - networkmanager
+      - networkmanager-openvpn
     state: present
 
 - name: Install Ubuntu Fonts
@@ -29,6 +31,11 @@
 - name: enable GDM
   systemd:
     name: gdm
+    enabled: yes
+
+- name: enable NetworkManager
+  systemd:
+    name: NetworkManager
     enabled: yes
 
 - include: theme.yml
