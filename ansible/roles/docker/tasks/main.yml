@@ -5,6 +5,11 @@
     name: docker
     state: present
 
+- name: Installing docker-compose
+  pacman:
+    name: docker-compose
+    state: present
+
 - name: adding user vagrant to group docker
   user:
     name: vagrant
