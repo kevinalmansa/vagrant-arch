@@ -2,13 +2,22 @@
   copy:
     src: zshrc
     dest: /home/vagrant/.zshrc
+    owner: vagrant
+    group: vagrant
+    mode: '0644'
 
 - name: Copying functions file
   copy:
     src: functions
     dest: /home/vagrant/.functions
+    owner: vagrant
+    group: vagrant
+    mode: '0644'
 
 - name: Copying aliases
   copy:
     src: aliases
     dest: /home/vagrant/.aliases
+    owner: vagrant
+    group: vagrant
+    mode: '0644'

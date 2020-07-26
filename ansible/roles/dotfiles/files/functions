@@ -34,11 +34,83 @@ python-http(){
 }
 
 metasploit() {
-  docker run --rm -it  --network=host metasploitframework/metasploit-framework ./msfconsole "$@"
+  docker run -it --rm                       \
+  --network=host                            \
+  -v $HOME/docker-shared:/docker-shared     \
+  -v $HOME/git/packages/seclists:/wordlists \
+  metasploitframework/metasploit-framework  \
+  ./msfconsole "$@"
+}
+
+trivy() {
+  mkdir -p $HOME/.cache
+  docker run --rm               \
+  -v $HOME/.cache:/root/.cache/ \
+  aquasec/trivy "$@"
+}
+
+docker_local_gui() {
+  local XSOCK=/tmp/.X11-unix
+  local XAUTH=$(mktemp /tmp/dockergui_tmp.XXXX.xauth)
+
+  xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+  chmod 644 $XAUTH
+  mkdir -p $HOME/docker-shared
+
+  docker run --rm --privileged              \
+  --network=host                            \
+  --pid=host                                \
+  --ipc=host                                \
+  -e DISPLAY=$DISPLAY                       \
+  -e XAUTHORITY=$XAUTH                      \
+  -v /tmp/.X11-unix/:/tmp/.X11-unix         \
+  -v $XAUTH:$XAUTH                          \
+  -v $HOME/docker-shared:/docker-shared     \
+  -v $HOME/git/packages/seclists:/wordlists \
+  "$@"
+
+  rm $XAUTH
+}
+
+docker_local() {
+  docker run --rm --privileged              \
+  --network=host			                \
+  --pid=host				                \
+  --ipc=host				                \
+  -v $HOME/docker-shared:/docker-shared	    \
+  -v $HOME/git/packages/seclists:/wordlists \
+  "$@"
+}
+
+# Interactive + tty for apps taht need user interaction
+docker_local_it() {
+  docker run -it --rm --privileged          \
+  --network=host			                \
+  --pid=host				                \
+  --ipc=host				                \
+  -v $HOME/docker-shared:/docker-shared	    \
+  -v $HOME/git/packages/seclists:/wordlists \
+  "$@"
+}
+
+docker_nettool() {
+  docker run --rm                           \
+  --network=host			                \
+  -v $HOME/docker-shared:/docker-shared	    \
+  -v $HOME/git/packages/seclists:/wordlists \
+  "$@"
+}
+
+# Interactive + tty for apps taht need user interaction
+docker_nettool_it() {
+  docker run -it --rm                       \
+  --network=host			                \
+  -v $HOME/docker-shared:/docker-shared	    \
+  -v $HOME/git/packages/seclists:/wordlists \
+  "$@"
 }
 
 # https://github.com/jessfraz/dotfiles
-
 ## Determine size of a file or total size of a directory
 fs() {
 	if du -b /dev/null > /dev/null 2>&1; then
@@ -52,4 +124,9 @@ fs() {
 	else
 		du $arg -- .[^.]* *
 	fi
+}
+
+# Run `dig` and display the most useful info
+digga() {
+	dig +nocmd "$1" any +multiline +noall +answer
 }

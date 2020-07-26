@@ -16,10 +16,10 @@ Vagrant.configure("2") do |config|
   #config.vm.network "public_network"
 
   # Copy SSH keys and configuration
-  config.vm.provision "file", source: "ssh/config", destination: "~/.ssh/config"
-  config.vm.provision "file", source: "ssh/id_github.pub", destination: "~/.ssh/id_github.pub"
-  config.vm.provision "file", source: "ssh/id_github", destination: "~/.ssh/id_github"
-  config.vm.provision "shell", inline: "chmod 600 ~/.ssh/id_github"
+  config.vm.provision "file", source: "ssh/config", destination: "/home/vagrant/.ssh/config"
+  config.vm.provision "file", source: "ssh/id_github.pub", destination: "/home/vagrant/.ssh/id_github.pub"
+  config.vm.provision "file", source: "ssh/id_github", destination: "/home/vagrant/.ssh/id_github"
+  config.vm.provision "shell", inline: "chmod 600 /home/vagrant/.ssh/id_github"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.

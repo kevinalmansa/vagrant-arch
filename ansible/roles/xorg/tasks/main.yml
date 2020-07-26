@@ -11,6 +11,7 @@
       - virtualbox-guest-utils
       - xorg-server
       - xorg-server-common
+      - xorg-xauth
       - mesa
     state: present
 

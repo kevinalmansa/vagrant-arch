@@ -9,20 +9,34 @@
 
 - name: Copy wallpaper
   copy:
-    src: wallpaper.jpg
-    dest: /home/vagrant/Pictures/wallpaper.jpg
+    src: wallpaper.png
+    dest: /home/vagrant/Pictures/wallpaper.png
+    owner: vagrant
+    group: vagrant
+    mode: '0644'
+
+- name: Configure user avatar
+  copy:
+    src: face
+    dest: /home/vagrant/.face
     owner: vagrant
     group: vagrant
     mode: '0644'
 
 - name: Set desktop background
-  command: gsettings set org.gnome.desktop.background picture-uri 'file:///home/vagrant/Pictures/wallpaper.jpg'
+  command: gsettings set org.gnome.desktop.background picture-uri 'file:///home/vagrant/Pictures/wallpaper.png'
 
 - name: Set shortcuts bar
   command: gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop']"
 
 - name: Set GTK Theme
   command: gsettings set org.gnome.desktop.interface gtk-theme Arc-Dark
+
+- name: Enable Shell Themes
+  command: gsettings set org.gnome.shell enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.github.com']"
+
+- name: Set Gnome Shell Theme
+  command: gsettings set org.gnome.shell.extensions.user-theme name 'Arc-Dark'
 
 - name: Set document font
   command: gsettings set org.gnome.desktop.interface document-font-name 'Sans Regular 11'

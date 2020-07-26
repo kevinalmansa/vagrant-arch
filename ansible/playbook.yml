@@ -17,10 +17,10 @@
     - dotfiles
     - xorg
     - gnome
+    - yay
     - golang
     - nasm
     - gdb
-    - yay
     - firefox
     - google-chrome
     - intellij
@@ -28,26 +28,12 @@
     - docker
     - openssh
     - openvpn
-    - filezilla
-    - tmux
-    - proxychains
-    - ghidra
-    - radare
-    - cutter
-    - hashid
-    - burpsuite
     - nmap
     - wireshark
-    - sqlmap
-    - gobuster
-    - nikto
-    - ffuf
-    - sublist3r
-    - nbtscan
-    - onesixtyone
+    - proxychains
     - smbclient
-    - smbmap
-    - smtp-user-enum
-    - snmpwalk
-    - sslscan
-    - sipvicious
+    - filezilla
+    - tmux
+    - burpsuite
+    - ghidra
+    - seclists
