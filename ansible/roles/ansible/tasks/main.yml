@@ -1,0 +1,6 @@
+---
+
+- name: Installing ansible
+  pacman:
+    name: ansible
+    state: present

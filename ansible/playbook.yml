@@ -26,6 +26,8 @@
     - intellij
     - vscode
     - docker
+    - tfenv
+    - ansible
     - openssh
     - openvpn
     - nmap

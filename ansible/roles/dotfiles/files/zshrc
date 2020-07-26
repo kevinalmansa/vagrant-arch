@@ -86,6 +86,11 @@ export GOROOT=/usr/lib/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
+## TFEnv
+if [ -d "$HOME/git/packages/tfenv" ]; then
+    export PATH=$HOME/git/packages/tfenv/bin:$PATH
+fi
+
 ## Load custom functions
 if [ -f "$HOME/.functions" ]; then
     source $HOME/.functions

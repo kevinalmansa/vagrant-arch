@@ -49,6 +49,14 @@ trivy() {
   aquasec/trivy "$@"
 }
 
+awscli() {
+  mkdir -p $HOME/.aws
+  docker run --rm -it       \
+  -v $HOME/.aws:/root/.aws  \
+  -v $(pwd):/aws            \
+  amazon/aws-cli
+}
+
 docker_local_gui() {
   local XSOCK=/tmp/.X11-unix
   local XAUTH=$(mktemp /tmp/dockergui_tmp.XXXX.xauth)

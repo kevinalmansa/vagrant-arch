@@ -1,0 +1,16 @@
+---
+
+- name: Ensuring git directory exists
+  become: yes
+  become_user: vagrant
+  file:
+    path: /home/vagrant/git/packages
+    state: directory
+    mode: '0755'
+
+- name: Downloading Sublist3r
+  become: yes
+  become_user: vagrant
+  git:
+    repo: https://github.com/tfutils/tfenv.git
+    dest: /home/vagrant/git/packages/tfenv
