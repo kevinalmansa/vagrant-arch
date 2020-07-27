@@ -15,6 +15,15 @@
       - mesa
     state: present
 
+- name: Install xorg keyboard settings
+  become: true
+  copy:
+    src: 00-keyboard.conf
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf
+    owner: root
+    group: root
+    mode: "0644"
+
 #- name: Install xorg debug packages
 #  pacman:
 #    name:

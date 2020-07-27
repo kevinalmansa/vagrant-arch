@@ -38,6 +38,9 @@
     name: NetworkManager
     enabled: yes
 
+- name: Configure Gnome to use the X keyboard layout by default
+  command: gsettings set org.gnome.desktop.input-sources sources '[]'
+
 - include: theme.yml
   become: yes
   become_user: vagrant

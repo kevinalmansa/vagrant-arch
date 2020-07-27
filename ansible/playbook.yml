@@ -12,8 +12,10 @@
   roles:
     - expand-disk
     - base
+    - locale # thank you John! :D
     - iptables
     - shell
+    - asdf
     - dotfiles
     - xorg
     - gnome

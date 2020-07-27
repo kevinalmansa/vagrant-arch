@@ -1,0 +1,23 @@
+---
+
+- name: Ensure packages directory exists for user
+  become: yes
+  become_user: vagrant
+  file:
+    path: /home/vagrant/git/packages
+    state: directory
+
+- name: clone asdf from github
+  become: yes
+  become_user: vagrant
+  git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: /home/vagrant/git/packages/asdf
+
+- name: Create symbolic link to asdf
+  file:
+    src: /home/vagrant/git/packages/asdf
+    dest: /home/vagrant/.asdf
+    owner: vagrant
+    group: vagrant
+    state: link
