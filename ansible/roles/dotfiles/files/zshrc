@@ -75,10 +75,32 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # User configuration
 
+## Manage Kubernetes Configs
+
+### Set default kube context if present
+DEFAULT_KUBE_CONTEXTS="${HOME}/.kube/config"
+if [ -f "${DEFAULT_KUBE_CONTEXTS}" ]; then
+  export KUBECONFIG="${DEFAULT_KUBE_CONTEXTS}"
+fi
+
+### Additional contexts should be in ~/.kube/custom-contexts/
+CUSTOM_KUBE_CONTEXTS="${HOME}/.kube/custom-contexts"
+mkdir -p $CUSTOM_KUBE_CONTEXTS
+
+### Load the additional contexts
+OIFS="${IFS}"
+IFS=$'\n'
+for contextFile in `find "${CUSTOM_KUBE_CONTEXTS}" -type f -name "*.yml"`;
+do
+  export KUBECONFIG="$contextFile:$KUBECONFIG"
+done
+IFS="${OIFS}"
+
 ## Spaceship Options
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_BATTERY_SHOW=false
 SPACESHIP_BATTERY_ALWAYS_SHOW=false
+SPACESHIP_KUBECTL_SHOW=true
 
 ## Golang
 export GOPATH=$HOME/go
