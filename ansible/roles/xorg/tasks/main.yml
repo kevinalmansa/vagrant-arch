@@ -12,6 +12,8 @@
       - xorg-server
       - xorg-server-common
       - xorg-xauth
+      - xorg-xinit
+      - xorg-xrdb
       - mesa
     state: present
 

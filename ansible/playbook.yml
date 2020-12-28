@@ -18,7 +18,8 @@
     - asdf
     - dotfiles
     - xorg
-    - gnome
+    - i3
+    # - gnome
     - yay
     - golang
     - nasm
