@@ -2,3 +2,6 @@
 
 # Set Wallpaper
 ~/.fehbg &
+
+# Virtualbox integration
+/usr/bin/VBoxClient-all

@@ -12,6 +12,7 @@
     name:
       - i3-gaps
       - i3status
+      - i3lock
     state: present
 
 - name: Install Fonts
@@ -49,6 +50,9 @@
       - lxappearance
       - feh
       - xclip
+      - thunar
+      - gvfs
+      - thunar-volman
 
 - name: Copy gtk2.0 theme
   copy:
@@ -133,6 +137,23 @@
     group: vagrant
     mode: '0755'
 
+- name: Ensures backgrounds directory exists
+  file:
+    path: /usr/share/backgrounds
+    state: directory
+
+- name: Copy wallpaper for lightdm
+  copy:
+    src: wallpaper.png
+    dest: /usr/share/backgrounds/wallpaper.png
+    mode: '0644'
+
+- name: Copy user image for lightdm
+  copy:
+    src: archlinux-icon.svg
+    dest: /usr/share/backgrounds/archlinux-icon.svg
+    mode: '0644'
+
 - name: Copy wallpaper
   copy:
     src: wallpaper.png
@@ -148,6 +169,14 @@
     owner: vagrant
     group: vagrant
     mode: '0755'
+
+- name: Copy LightDM config
+  copy:
+    src: lightdm-gtk-greeter.conf
+    dest: /etc/lightdm/lightdm-gtk-greeter.conf
+    owner: root
+    group: root
+    mode: '0644'
 
 - name: Enable LightDM
   systemd:
