@@ -41,6 +41,7 @@
 - name: Install utilities
   pacman:
     name:
+      - alacritty
       - rxvt-unicode
       - xsel
       - rofi
@@ -56,6 +57,22 @@
       - thunar
       - gvfs
       - thunar-volman
+      - scrot
+      - screenfetch
+
+- name: Ensures Screenshots  dir exists
+  file:
+    path: /home/vagrant/Pictures/Screenshots
+    state: directory
+    owner: vagrant
+    group: vagrant
+
+- name: Ensures Documents dir exists
+  file:
+    path: /home/vagrant/Documents
+    state: directory
+    owner: vagrant
+    group: vagrant
 
 - name: Copy gtk2.0 theme
   copy:

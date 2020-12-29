@@ -16,4 +16,4 @@ base_packages:
   - vim
   - emacs
   - strace
-
+  - man-db

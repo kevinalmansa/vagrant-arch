@@ -13,6 +13,7 @@
   git:
     repo: https://github.com/asdf-vm/asdf.git
     dest: /home/vagrant/git/packages/asdf
+    depth: 1
 
 - name: Create symbolic link to asdf
   file:
@@ -25,4 +26,4 @@
 - name: Install Terraform through asdf
   become: yes
   become_user: vagrant
-  command: asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
+  command: /home/vagrant/.asdf/bin/asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git

@@ -19,6 +19,7 @@
   git:
     repo: https://github.com/hugsy/gef
     dest: /home/vagrant/git/packages/gef
+    depth: 1
 
 - name: Configuring gdb to use GEF
   copy:

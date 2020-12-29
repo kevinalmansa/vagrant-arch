@@ -13,3 +13,4 @@
   git:
     repo: https://github.com/danielmiessler/SecLists.git
     dest: /home/vagrant/git/packages/seclists
+    depth: 1

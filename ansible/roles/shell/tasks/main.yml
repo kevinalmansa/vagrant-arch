@@ -27,10 +27,46 @@
     chdir: /home/vagrant
   ignore_errors: yes
 
-- name: Install Powerline Fonts for Spaceship
-  pacman:
-    name: powerline-fonts
-    state: present
+- name: Ensure aur directory exists for user
+  become: yes
+  become_user: vagrant
+  file:
+    path: /home/vagrant/aur
+    state: directory
+
+- name: Clone powerline fonts AUR repo
+  become: yes
+  become_user: vagrant
+  git:
+    repo: https://aur.archlinux.org/powerline-fonts-git.git
+    dest: /home/vagrant/aur/powerline-fonts-git
+
+- name: Install powerline fonts
+  become: yes
+  become_user: vagrant
+  command: makepkg --noconfirm -si
+  args:
+    chdir: /home/vagrant/aur/powerline-fonts-git
+
+- name: Git checkout nerd-fonts
+  become: yes
+  become_user: vagrant
+  git:
+    repo: 'https://github.com/ryanoasis/nerd-fonts.git'
+    dest: /home/vagrant/git/packages/nerd-fonts
+    depth: 1
+
+- name: Install nerd-fonts
+  become: yes
+  become_user: vagrant
+  command: /home/vagrant/git/packages/nerd-fonts/install.sh
+
+- name: Ensures go dir exists
+  file:
+    path: /home/vagrant/go
+    state: directory
+    owner: vagrant
+    group: vagrant
 
 - name: Download Spaceship
   become: yes
@@ -38,6 +74,7 @@
   git:
     repo: https://github.com/denysdovhan/spaceship-prompt.git
     dest: /home/vagrant/git/packages/spaceship-prompt
+    depth: 1
 
 - name: Install Spaceship
   file:
