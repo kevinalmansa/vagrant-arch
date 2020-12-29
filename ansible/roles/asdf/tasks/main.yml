@@ -21,3 +21,8 @@
     owner: vagrant
     group: vagrant
     state: link
+
+- name: Install Terraform through asdf
+  become: yes
+  become_user: vagrant
+  command: asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
