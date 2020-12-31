@@ -1,6 +1,0 @@
----
-
-- name: Installing nbtscan
-  pacman:
-    name: nbtscan
-    state: present

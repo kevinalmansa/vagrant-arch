@@ -1,6 +1,0 @@
----
-
-- name: Installing nikto
-  pacman:
-    name: nikto
-    state: present

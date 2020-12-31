@@ -1,6 +1,0 @@
----
-
-- name: Installing OSS VSCode
-  pacman:
-    name: code
-    state: present

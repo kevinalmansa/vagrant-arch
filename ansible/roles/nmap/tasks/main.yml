@@ -1,6 +1,0 @@
----
-
-- name: installing nmap
-  pacman:
-    name: nmap
-    state: present
