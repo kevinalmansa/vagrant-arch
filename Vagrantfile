@@ -23,6 +23,7 @@ Vagrant.configure("2") do |config|
 
   # Install Ansible
   #config.vm.provision "shell", inline: "rm -R /etc/pacman.d/gnupg && rm -R /root/.gnupg && gpg --refresh-keys && pacman-key --init && pacman-key --populate archlinux && pacman-key --refresh-keys"
+  config.vm.provision "shell", inline: "sudo pacman -Sy --noconfirm gnupg archlinux-keyring"
   config.vm.provision "shell", inline: "pacman -Syyu --noconfirm"
   config.vm.provision "shell", inline: "pacman -S python python-pip --noconfirm"
 
