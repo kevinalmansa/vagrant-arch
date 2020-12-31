@@ -1,6 +1,0 @@
----
-
-- name: Installing nasm
-  pacman:
-    name: nasm
-    state: present

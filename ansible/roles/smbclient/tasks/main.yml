@@ -1,6 +1,0 @@
----
-
-- name: Installing smbclient
-  pacman:
-    name: smbclient
-    state: present

@@ -1,4 +1,0 @@
----
-
-- name: Generate initramfs
-  command: mkinitcpio --allpresets

@@ -1,6 +1,0 @@
----
-
-- name: Installing tmux
-  pacman:
-    name: tmux
-    state: present

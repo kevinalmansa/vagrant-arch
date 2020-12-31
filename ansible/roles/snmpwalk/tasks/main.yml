@@ -1,6 +1,0 @@
----
-
-- name: Installing net-snmp with snmpwalk
-  pacman:
-    name: net-snmp
-    state: present

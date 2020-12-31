@@ -1,6 +1,0 @@
----
-
-- name: Installing filezilla
-  pacman:
-    name: filezilla
-    state: present
