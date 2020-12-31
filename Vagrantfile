@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
 
   # Enable provisioning with Ansible - configure base system
   config.vm.provision "ansible_local" do |ansible|
-    ansible.playbook = "ansible/playbook.yml"
+    ansible.playbook = "ansible/playbook-vagrant-arch.yml"
   end
 
   config.vm.provision :reload
