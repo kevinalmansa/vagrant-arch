@@ -17,9 +17,11 @@ Vagrant.configure("2") do |config|
 
   # Copy SSH keys and configuration
   config.vm.provision "file", source: "ssh/config", destination: "/home/vagrant/.ssh/config"
-  config.vm.provision "file", source: "ssh/id_github.pub", destination: "/home/vagrant/.ssh/id_github.pub"
-  config.vm.provision "file", source: "ssh/id_github", destination: "/home/vagrant/.ssh/id_github"
-  config.vm.provision "shell", inline: "chmod 600 /home/vagrant/.ssh/id_github"
+
+  # To also include, for example, git access - you can copy the files like so:
+  # config.vm.provision "file", source: "ssh/id_github.pub", destination: "/home/vagrant/.ssh/id_github.pub"
+  # config.vm.provision "file", source: "ssh/id_github", destination: "/home/vagrant/.ssh/id_github"
+  # config.vm.provision "shell", inline: "chmod 600 /home/vagrant/.ssh/id_github"
 
   # Install Ansible
   #config.vm.provision "shell", inline: "rm -R /etc/pacman.d/gnupg && rm -R /root/.gnupg && gpg --refresh-keys && pacman-key --init && pacman-key --populate archlinux && pacman-key --refresh-keys"
