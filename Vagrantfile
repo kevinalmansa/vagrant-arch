@@ -23,9 +23,12 @@ Vagrant.configure("2") do |config|
   # config.vm.provision "file", source: "ssh/id_github", destination: "/home/vagrant/.ssh/id_github"
   # config.vm.provision "shell", inline: "chmod 600 /home/vagrant/.ssh/id_github"
 
-  # Install Ansible
-  #config.vm.provision "shell", inline: "rm -R /etc/pacman.d/gnupg && rm -R /root/.gnupg && gpg --refresh-keys && pacman-key --init && pacman-key --populate archlinux && pacman-key --refresh-keys"
-  config.vm.provision "shell", inline: "sudo pacman -Sy --noconfirm gnupg archlinux-keyring"
+  # Fix Arch Keyring issues
+  config.vm.provision "shell", inline: "sudo rm -R /etc/pacman.d/gnupg && sudo rm -R /root/.gnupg/"
+  config.vm.provision "shell", inline: "sudo pacman-key --init && sudo pacman-key --populate archlinux"
+  config.vm.provision "shell", inline: "sudo pacman -Syy archlinux-keyring --noconfirm"
+  
+  # Python required to install Ansible via pip, done by vagrant
   config.vm.provision "shell", inline: "pacman -Syyu --noconfirm"
   config.vm.provision "shell", inline: "pacman -S python python-pip --noconfirm"
 
